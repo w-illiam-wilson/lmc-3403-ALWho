@@ -1,15 +1,94 @@
-<html>
-  <head>
-    <title>My Homepage</title>
-  </head>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>jQuery Change Image Source on Click</title>
+<style>
+    .card{
+        margin: 30px;
+    }
+    .center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 60%;
+    }
+    .left{float:left!important}
+    .right{float:right!important}
+    .page-button{border:none;display:inline-block;padding:8px 16px;vertical-align:middle;overflow:hidden;color:inherit;background-color:inherit;text-align:center;cursor:pointer;white-space:nowrap}
+</style>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
 
 
-  <body>
-    <h1>My homepage!</h1>
-    
-    <h2>
-        ;)
-    </h2>
+$(document).ready(function(){
+    // $("img").click(function(){
+    //     // Change src attribute of image
+    //     $(this).attr("src", "images/card-front.jpg");
+    // });
 
-  </body>
+
+    $(document).on('click','#next',function(){
+        // alert("button");
+        currentNumber = $('#page').attr('src');
+        theNumber = ""
+        thisIsTheNumber = false
+        for (let i = 0; i < currentNumber.length; i++) {
+          if (i > 4 && currentNumber[i] == "e" && currentNumber[i-1] == "g" && currentNumber[i-2] == "a" && currentNumber[i-3] == "p") {
+          // && currentNumber[i-1] == "g" currentNumber[i-2] == "a" && currentNumber[i] == "p") {
+              thisIsTheNumber = true
+              continue
+            }
+          if (thisIsTheNumber) {
+              if (currentNumber[i] == ".") {
+                  break
+              }
+              theNumber += currentNumber[i]
+
+          }
+        }
+
+        number = parseInt(theNumber) + 1
+        // $("#page").attr("src", "images/card-front.jpg");
+
+        $('#page').attr('src','pages/page' + String(number) + '.png');
+    });
+
+    $(document).on('click','#previous',function(){
+        // alert("button");
+        currentNumber = $('#page').attr('src');
+        theNumber = ""
+        thisIsTheNumber = false
+        for (let i = 0; i < currentNumber.length; i++) {
+          if (i > 4 && currentNumber[i] == "e" && currentNumber[i-1] == "g" && currentNumber[i-2] == "a" && currentNumber[i-3] == "p") {
+          // && currentNumber[i-1] == "g" currentNumber[i-2] == "a" && currentNumber[i] == "p") {
+              thisIsTheNumber = true
+              continue
+            }
+          if (thisIsTheNumber) {
+              if (currentNumber[i] == ".") {
+                  break
+              }
+              theNumber += currentNumber[i]
+
+          }
+        }
+
+        number = parseInt(theNumber) - 1
+        // $("#page").attr("src", "images/card-front.jpg");
+
+        $('#page').attr('src','pages/page' + String(number) + '.png');
+    });
+});
+</script>
+</head>
+<body>
+    <div class="center">
+        <img id = "page" class="center" src="pages/page1.png" alt="Page 1">
+        <div class="w3-bar">
+          <button id="previous" class="page-button left">&laquo; Previous</button>
+          <button id="next" class="page-button right">Next &raquo;</button>
+        </div>
+    </div>
+
+</body>
 </html>
