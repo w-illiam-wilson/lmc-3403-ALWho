@@ -10,11 +10,12 @@
       display: block;
       margin-left: auto;
       margin-right: auto;
-      width: 60%;
+      max-width: 60%;
+      max-height: 600px;
     }
-    .left{float:left!important}
-    .right{float:right!important}
-    .page-button{border:none;display:inline-block;padding:8px 16px;vertical-align:middle;overflow:hidden;color:inherit;background-color:inherit;text-align:center;cursor:pointer;white-space:nowrap}
+    .left{float:left!important; background-color: "#c0c0c0"}
+    .right{float:right!important; background-color: "#5f6ef5"}
+    .page-button{border:none;display:inline-block;padding:8px 16px;vertical-align:middle;overflow:hidden;color:inherit;text-align:center;cursor:pointer;white-space:nowrap}
 </style>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
@@ -25,8 +26,11 @@ $(document).ready(function(){
     //     // Change src attribute of image
     //     $(this).attr("src", "images/card-front.jpg");
     // });
+    numberOfPages = 2
+    backgroundColorForBorder = "#c0c0c0"
+    backgroundColorForNormal = "#5f6ef5"
 
-
+    $("#next").css("background-color", backgroundColorForNormal);
     $(document).on('click','#next',function(){
         // alert("button");
         currentNumber = $('#page').attr('src');
@@ -48,9 +52,22 @@ $(document).ready(function(){
         }
 
         number = parseInt(theNumber) + 1
-        // $("#page").attr("src", "images/card-front.jpg");
+        filePath = 'pages/page' + String(number) + '.png'
 
-        $('#page').attr('src','pages/page' + String(number) + '.png');
+        // $("#page").attr("src", "images/card-front.jpg");
+        if (number <= numberOfPages) {
+            $('#page').attr('src',filePath);
+        }
+        $("#previous").html('&laquo; Previous');
+        $("#previous").css("background-color", backgroundColorForNormal);
+        if (number >= numberOfPages) {
+            $("#next").html( 'End');
+            $("#next").css("background-color", backgroundColorForBorder);
+        } else {
+            $("#next").html( 'Next &raquo;');
+            $("#next").css("background-color", backgroundColorForNormal);
+        }
+
     });
 
     $(document).on('click','#previous',function(){
@@ -76,16 +93,31 @@ $(document).ready(function(){
         number = parseInt(theNumber) - 1
         // $("#page").attr("src", "images/card-front.jpg");
 
-        $('#page').attr('src','pages/page' + String(number) + '.png');
+        filePath = 'pages/page' + String(number) + '.png'
+
+
+        if (number > 0) {
+            $('#page').attr('src',filePath);
+        }
+        $("#next").html( 'Next &raquo;');
+        $("#next").css("background-color", backgroundColorForNormal);
+        if (number <= 1) {
+            $("#previous").html("Beginning")
+            $("#previous").css("background-color", backgroundColorForBorder);
+        } else {
+            $("#previous").html('&laquo; Previous');
+            $("#previous").css("background-color", backgroundColorForNormal);
+        }
     });
 });
 </script>
 </head>
 <body>
     <div class="center">
+        <center><h2>ALWho?</h2></center>
         <img id = "page" class="center" src="pages/page1.png" alt="Page 1">
         <div class="w3-bar">
-          <button id="previous" class="page-button left">&laquo; Previous</button>
+          <button id="previous" class="page-button left">Beginning</button>
           <button id="next" class="page-button right">Next &raquo;</button>
         </div>
     </div>
