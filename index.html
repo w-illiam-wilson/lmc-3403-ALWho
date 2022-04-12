@@ -1,7 +1,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>jQuery Change Image Source on Click</title>
+<title>ALWho?</title>
 <style>
     .card{
         margin: 30px;
@@ -13,6 +13,7 @@
       max-width: 60%;
       max-height: 600px;
     }
+
     .left{float:left!important; background-color: "#c0c0c0"}
     .right{float:right!important; background-color: "#5f6ef5"}
     .page-button{border:none;display:inline-block;padding:8px 16px;vertical-align:middle;overflow:hidden;color:inherit;text-align:center;cursor:pointer;white-space:nowrap}
@@ -63,9 +64,15 @@ $(document).ready(function(){
         if (number >= numberOfPages) {
             $("#next").html( 'End');
             $("#next").css("background-color", backgroundColorForBorder);
+
         } else {
             $("#next").html( 'Next &raquo;');
             $("#next").css("background-color", backgroundColorForNormal);
+        }
+        if (number == 1) {
+            $("#body").css("background-color", "black");
+        } else {
+            $("#body").css("background-color", "white");
         }
 
     });
@@ -104,15 +111,17 @@ $(document).ready(function(){
         if (number <= 1) {
             $("#previous").html("Beginning")
             $("#previous").css("background-color", backgroundColorForBorder);
+            $("#body").css("background-color", "black");
         } else {
             $("#previous").html('&laquo; Previous');
             $("#previous").css("background-color", backgroundColorForNormal);
+            $("#body").css("background-color", "white");
         }
     });
 });
 </script>
 </head>
-<body>
+<body id="body" style="background-color:black;">
     <div class="center">
         <center><h2>ALWho?</h2></center>
         <img id = "page" class="center" src="pages/page1.png" alt="Page 1">
