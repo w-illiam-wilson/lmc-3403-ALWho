@@ -11,7 +11,14 @@
       margin-left: auto;
       margin-right: auto;
       max-width: 60%;
-      max-height: 600px;
+      height: 600px;
+    }
+    .center-row {
+        
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 60%;
+
     }
 
     .left{float:left!important; background-color: "#c0c0c0"}
@@ -27,7 +34,7 @@ $(document).ready(function(){
     //     // Change src attribute of image
     //     $(this).attr("src", "images/card-front.jpg");
     // });
-    numberOfPages = 2
+    numberOfPages = 7
     backgroundColorForBorder = "#c0c0c0"
     backgroundColorForNormal = "#5f6ef5"
 
@@ -125,6 +132,9 @@ $(document).ready(function(){
     <div class="center">
         <center><h2>ALWho?</h2></center>
         <img id = "page" class="center" src="pages/page1.png" alt="Page 1">
+
+    </div>
+    <div class="center-row">
         <div class="w3-bar">
           <button id="previous" class="page-button left">Beginning</button>
           <button id="next" class="page-button right">Next &raquo;</button>
