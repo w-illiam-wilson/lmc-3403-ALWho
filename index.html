@@ -34,7 +34,8 @@ $(document).ready(function(){
     //     // Change src attribute of image
     //     $(this).attr("src", "images/card-front.jpg");
     // });
-    numberOfPages = 12
+
+    numberOfPages = 13
     backgroundColorForBorder = "#c0c0c0"
     backgroundColorForNormal = "#5f6ef5"
 
@@ -76,8 +77,9 @@ $(document).ready(function(){
             $("#next").html( 'Next &raquo;');
             $("#next").css("background-color", backgroundColorForNormal);
         }
-        if (number == 1) {
+        if (number == 1 || number == 8) {
             $("#body").css("background-color", "#0D0C0E");
+
         } else {
             $("#body").css("background-color", "white");
         }
@@ -123,6 +125,9 @@ $(document).ready(function(){
             $("#previous").html('&laquo; Previous');
             $("#previous").css("background-color", backgroundColorForNormal);
             $("#body").css("background-color", "white");
+            if (number == 8) {
+                $("#body").css("background-color", "#0D0C0E");
+            }
         }
     });
 });
